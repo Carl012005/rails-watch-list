@@ -1,0 +1,6 @@
+<h1>Hello form the bookmarks new page</h1>
+<%= simple_form_for [@list, @bookmark] do |f| %>
+  <%= f.input :comment, placeholder: "Enter a comment about the movie" %>
+  <%= f.association :movie, prompt: "Select a movie" %>
+  <%= f.submit class: "btn btn-flat" %>
+<% end %>
