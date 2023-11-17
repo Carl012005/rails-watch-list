@@ -5,14 +5,27 @@
 }
 
 .card-category {
-  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("https://classik-hotel-collection.com/wp-content/uploads/2023/03/Classik-Hotel-Alexander-Plaza-Berlin-Aussenansicht.jpg");
-  width: 80px;
-  height: 120px;
   display: flex;
+  background-size: cover;
+  background-position: center;
+  height: 120px;
   justify-content: center;
   align-items: center;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  position: relative;
 
   a {
     text-decoration: none;
+    color: white;
   }
+}
+
+.remove-btn{
+  position: absolute;
+  right: 4%;
+  top: 3%;
 }

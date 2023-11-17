@@ -6,7 +6,9 @@
   <%= movie.title %> <br>
   <%= movie.overview %> <br>
   <%= movie.rating %> <br>
+  <%= link_to "delete", bookmark_path(Bookmark.find_by(list: @list, movie: movie)), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove #{movie.title} from your #{@list.name} list"}%>
   <br>
+  <p></p>
 <% end %>
 
 <%= link_to("Add a movie to the list", new_bookmark_path(@list)) %>
