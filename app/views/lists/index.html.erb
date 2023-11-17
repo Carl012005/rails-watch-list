@@ -14,7 +14,12 @@
 
   <div class="cards">
     <% @lists.each do |list| %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://zameenblog.s3.amazonaws.com/blog/wp-content/uploads/2019/08/Cover-1440x625-1.jpg);">
+      <% if list.photo.blank? == true %>
+        <% url = 'https://zameenblog.s3.amazonaws.com/blog/wp-content/uploads/2019/08/Cover-1440x625-1.jpg' %>
+      <% else %>
+        <% url = cl_image_path list.photo.key %>
+      <% end %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= url %>);">
         <%= link_to(list.name, list_path(list)) %>
         <%= link_to("X", destroy_list_path(list), data: { turbo_method: :delete }, class: "remove-btn") %>
       </div>

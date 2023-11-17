@@ -29,3 +29,52 @@
   right: 4%;
   top: 3%;
 }
+
+.card-trip {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 7px;
+
+  img {
+    height: 350px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  h2 {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  p {
+    font-size: 16px;
+    opacity: .7;
+    margin: 0;
+  }
+
+
+  .card-trip-infos {
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: relative;
+  }
+
+  .card-trip-bottom {
+    padding-top: 16px;
+    padding-right: 35px;
+    padding-bottom: 19px;
+    padding-left: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    a {
+      text-decoration: none;
+      color: red;
+    }
+  }
+}

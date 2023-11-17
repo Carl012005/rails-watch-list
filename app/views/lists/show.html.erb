@@ -1,14 +1,36 @@
-<h1><%= @list.name %></h1>
-
-<%= link_to("Back to Overview", lists_path) %> <br>
-
-<% @list.movies.each do |movie| %>
-  <%= movie.title %> <br>
-  <%= movie.overview %> <br>
-  <%= movie.rating %> <br>
-  <%= link_to "delete", bookmark_path(Bookmark.find_by(list: @list, movie: movie)), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove #{movie.title} from your #{@list.name} list"}%>
-  <br>
-  <p></p>
+<% if @list.photo.blank? == true %>
+  <% url = 'https://zameenblog.s3.amazonaws.com/blog/wp-content/uploads/2019/08/Cover-1440x625-1.jpg' %>
+<% else %>
+  <% url = cl_image_path @list.photo.key %>
 <% end %>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= url %>);">
+  <div class="container d-flex justify-content-center">
+    <h1><%= @list.name %></h1>
+  </div>
+</div>
 
-<%= link_to("Add a movie to the list", new_bookmark_path(@list)) %>
+<div class="container d-flex justify-content-between align-items-center py-4">
+  <h5>List-Length: <%= @list.movies.length %></h5>
+  <%= link_to("Add a movie", new_bookmark_path(@list), class: "btn btn-success") %>
+</div>
+
+<div class="container">
+  <div class="cards pb-5" style="grid-template-columns: 1fr 1fr;">
+    <% @list.movies.each do |movie| %>
+      <div class="card-trip">
+        <img src=<%= movie.poster_url %> />
+        <div class="card-trip-infos">
+          <div>
+            <h2><%= movie.title %> <span style="opacity: 0.6; font-size: 14px;">• <%= movie.rating %></span> <span style="font-size: 14px;">⭐</span></h2>
+            <p><%= movie.overview %></p>
+          </div>
+        </div>
+        <div class="card-trip-bottom">
+          <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
+          <p>» <%= bookmark.comment %></p>
+          <%= link_to "delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove #{movie.title} from your #{@list.name} list"}%>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
