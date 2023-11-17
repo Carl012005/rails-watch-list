@@ -73,3 +73,6 @@ gem "sassc-rails"
 
 # Adding a gem
 gem "dotenv-rails"
+
+# Adding cloudinary for image uploads
+gem "cloudinary"
